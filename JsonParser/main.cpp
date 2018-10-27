@@ -80,15 +80,14 @@ vector<string> getOddsData(const string json) {
 					}
 				}
 		}
-    }
-    catch (...) {
-    	oddsData.clear();
-    	oddsData.push_back(JSON_BAD_FORMAT);
-    }
-
-    if (oddsData.size() == 0) {
-    	oddsData.push_back(JSON_NO_ODDS);
-    }
+	}
+	catch (...) {
+		oddsData.clear();
+		oddsData.push_back(JSON_BAD_FORMAT);
+	}
+	if (oddsData.size() == 0) {
+		oddsData.push_back(JSON_NO_ODDS);
+	}
 
 	return oddsData;
 }
