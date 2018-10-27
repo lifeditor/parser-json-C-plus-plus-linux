@@ -144,32 +144,32 @@ vector<string> getDirectoryFiles(const string & dir, const vector<string> & exte
 
 int main() {
 	cout << MSG_BEGIN_FILE_OPERATION << endl;
+	
+	try {
+    		for (auto & fileName: getDirectoryFiles(FILE_SOURCE_DIRECTORY, {FILE_SOURCE_EXTENSION})) {
+    			string line;
+    			stringstream json;
 
-    try {
-    	for (auto & fileName: getDirectoryFiles(FILE_SOURCE_DIRECTORY, {FILE_SOURCE_EXTENSION})) {
-    		string line;
-    		stringstream json;
+    			ifstream fileSource (fileName);
+    			if (fileSource.is_open()) {
+    				while (getline(fileSource, line))
+    					json<<line;
 
-    		ifstream fileSource (fileName);
-    		if (fileSource.is_open()) {
-    			while (getline(fileSource, line))
-    				json<<line;
-
-    			ofstream fileDestination (fileName.replace(fileName
-    						.find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
-    			if (fileDestination) {
-    				for (auto & oddsData: getOddsData(json.str()))
-    					fileDestination << oddsData << endl;
+    					ofstream fileDestination (fileName.replace(fileName
+								  .find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
+    					if (fileDestination) {
+    						for (auto & oddsData: getOddsData(json.str()))
+    							fileDestination << oddsData << endl;
+    					}
+    					fileDestination.close();
     			}
-    			fileDestination.close();
+    			fileSource.close();
     		}
-    		fileSource.close();
+    		cout << MSG_END_FILE_OPERATION << endl;
     	}
-    	cout << MSG_END_FILE_OPERATION << endl;
-    }
-    catch (exception & ex) {
-    	cout << MSG_ERROR_FILE_OPERATION << ex.what()<< endl;
-    }
+	catch (exception & ex) {
+    		cout << MSG_ERROR_FILE_OPERATION << ex.what()<< endl;
+    	}
 
-    return 0;
+    	return 0;
 }
