@@ -1,0 +1,154 @@
+{
+  "oddtypes": {
+    "1019": {
+      "multibet": true,
+      "ordering": 60,
+      "lang": {
+        "": "Goal from 1 to %Y% minute"
+      }
+    
+  },
+  "epoch": 1528464285,
+  "delta": {
+    "bm": {
+      "2001779929": {
+        "PE-0": {
+          "state": {
+            "short_id": 9625
+          }
+        },
+        "PP-0": {
+          "state": {
+            "active": true,
+            "provider_id": 2,
+            "anons": true,
+            "short_id": 9626
+          }
+        },
+        "PP-1": {
+          "state": {
+            "short_id": 10936
+          }
+        },
+        "PP-2": {
+          "state": {
+            "short_id": 10937
+          }
+        },
+        "PP-3": {
+          "state": {
+            "short_id": 10939
+          }
+        },
+        "PS-0": {
+          "state": {
+            "short_id": 10940
+          }
+        },
+        "desc": {
+          "category": {
+            "country": {
+              "alpha_2": "CZ",
+              "ru": "Чехия",
+              "alpha_3": "CZE",
+              "en": "Czech Republic",
+              "id": 235,
+              "ordering": 0
+            },
+            "es": "Czech Republic",
+            "ru": "Чехия",
+            "sport": 4,
+            "en": "Czech Republic",
+            "id": 2000000144,
+            "ordering": 0
+          },
+          "filters": "",
+          "teams": {
+            "2": {
+              "ru": "Мостечти Лви",
+              "sport": 4,
+              "tournament": 2000005396,
+              "id": 2000850696,
+              "en": "Mostecti Lvi"
+            },
+            "1": {
+              "es": "Kobra Praha",
+              "ru": "Кобра Прага",
+              "tournament": 2000005396,
+              "sport": 4,
+              "en": "Kobra Praha",
+              "id": 2000148884
+            }
+          },
+          "tournament": {
+            "auto-create-fobos-live": 0,
+            "category": 2000000144,
+            "ru": "2-я лига",
+            "auto-create-fobos-prematch": 0,
+            "ordering": 0,
+            "id": 2000005396,
+            "in_multibet": 1,
+            "country": {
+              "alpha_2": "CZ",
+              "ru": "Чехия",
+              "alpha_3": "CZE",
+              "en": "Czech Republic",
+              "id": 235,
+              "ordering": 0
+            },
+            "es": "League 2",
+            "hidden": 0,
+            "rating": 2,
+            "sport": 4,
+            "en": "League 2"
+          },
+          "anons": true,
+          "sport": {
+            "in_multibet": 1,
+            "has_time": 0,
+            "ru": "Хоккей",
+            "en": "Ice Hockey",
+            "id": 4,
+            "ordering": 12
+          },
+          "id": 2001779929,
+          "date": 1539791700
+        }
+      }
+    },
+    "info": {
+      "express": {
+        "prematch": {
+          "0030738902": {
+            "bonus": 1.1,
+            "odds": ["2001731074|PP-0|189|to|2.5|Over", "2001731174|PP-0|189|to|2.5|Over", "2001733640|PP-0|189|to|2.5|Over", "2001733685|PP-0|189|to|2.5|Over", "2001733707|PP-0|189|to|2.5|Over"],
+            "live": false
+          },
+          "0030738905": {
+            "bonus": 1.1,
+            "odds": ["2001724979|PP-0|173|1x2||1", "2001724985|PP-0|173|1x2||1", "2001724990|PP-0|173|1x2||1", "2001765759|PP-0|173|1x2||1", "2001774652|PP-0|173|1x2||2"],
+            "live": false
+          },
+          "0030738931": {
+            "bonus": 1.15,
+            "odds": ["2001724803|PP-0|189|to|2.5|Over", "2001724805|PP-0|189|to|2.5|Over", "2001724808|PP-0|189|to|2.5|Over", "2001724809|PP-0|189|to|2.5|Over", "2001724810|PP-0|189|to|2.5|Over", "2001724811|PP-0|189|to|2.5|Over", "2001724812|PP-0|189|to|2.5|Over", "2001724813|PP-0|189|to|2.5|Over"],
+            "live": false
+          },
+          "0030741971": {
+            "bonus": 1.1,
+            "odds": ["2001724803|PP-0|1109|ah|-1.0|2", "2001724805|PP-0|1109|ah|0.0|2", "2001724808|PP-0|173|1x2||2", "2001724809|PP-0|173|1x2||1", "2001724813|PP-0|189|to|2.5|Under"],
+            "live": false
+          },
+          "0030742047": {
+            "bonus": 1.2,
+            "odds": ["2001724803|PP-0|1109|ah|-1.0|2", "2001724805|PP-0|1109|ah|0.0|2", "2001724808|PP-0|189|to|2.5|Under", "2001724809|PP-0|189|to|2.5|Under", "2001724810|PP-0|1109|ah|0.0|1", "2001724811|PP-0|1109|ah|0.0|2", "2001724812|PP-0|189|to|2.5|Under", "2001724813|PP-0|173|1x2||1", "2001725028|PP-0|1109|ah|-1.0|1", "2001725030|PP-0|1109|ah|0.0|2"],
+            "live": false
+          }
+        }
+      }
+    }
+  },
+  "timestamp": 1539775459000,
+  "version": 145562,
+  "time": 186
+}
