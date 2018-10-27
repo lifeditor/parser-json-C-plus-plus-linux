@@ -155,13 +155,13 @@ int main() {
     				while (getline(fileSource, line))
     					json<<line;
 
-    					ofstream fileDestination (fileName.replace(fileName
-								  .find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
-    					if (fileDestination) {
-    						for (auto & oddsData: getOddsData(json.str()))
-    							fileDestination << oddsData << endl;
-    					}
-    					fileDestination.close();
+    				ofstream fileDestination (fileName.replace(fileName
+				                          .find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
+    				if (fileDestination) {
+					for (auto & oddsData: getOddsData(json.str()))
+						fileDestination << oddsData << endl;
+    				}
+    				fileDestination.close();
     			}
     			fileSource.close();
     		}
