@@ -134,7 +134,7 @@ vector<string> getDirectoryFiles(const string & dir, const vector<string> & exte
         }
         else if (dirent_ptr->d_type == DT_REG &&
         		 find(extensions.begin(), extensions.end(), getFileExtension(fileName)) != extensions.end()
-				 )
+		)
         	files.push_back(getPath({dir, fileName}));
     }
 
