@@ -75,8 +75,7 @@ vector<string> getOddsData(const string json) {
 						const Value & odds = oddsdata[KEY_ODDS];
 
 						for (Value::ConstMemberIterator itr = odds.MemberBegin(); itr != odds.MemberEnd(); ++itr)
-							oddsData
-							.push_back(id + CSV_DELIMITER + itr->name.GetString() + CSV_DELIMITER + itr->value.GetString());
+							oddsData.push_back(id + CSV_DELIMITER + itr->name.GetString() + CSV_DELIMITER + itr->value.GetString());
 					}
 				}
 		}
@@ -103,41 +102,39 @@ string getFileExtension (string fileName) {
 string getPath(initializer_list<string> parts) {
 	string pathTmp {};
 	string separator = "";
-
-    	for (auto & part: parts) {
+	
+	for (auto & part: parts) {
 		pathTmp.append(separator).append(part);
-        	separator = SEPARATOR;
-    	}
-
-    	return pathTmp;
+		separator = SEPARATOR;
+	}
+	
+	return pathTmp;
 }
 
 
 vector<string> getDirectoryFiles(const string & dir, const vector<string> & extensions) {
 	vector<string> files;
 	shared_ptr<DIR> directory_ptr(opendir(dir.c_str()), [](DIR* dir){ dir && closedir(dir); });
-
-    	if (!directory_ptr)
+	
+	if (!directory_ptr)
 		throw system_error(error_code(errno, system_category()), MSG_ERROR_DIRECTORY_OPEN + dir);
-
-    	struct dirent *dirent_ptr;
-
-    	while ((dirent_ptr = readdir(directory_ptr.get())) != nullptr) {
-        	const string fileName {dirent_ptr->d_name};
-
-        	if (dirent_ptr->d_type == DT_DIR) {
+	
+	struct dirent *dirent_ptr;
+	
+	while ((dirent_ptr = readdir(directory_ptr.get())) != nullptr) {
+		const string fileName {dirent_ptr->d_name};
+		
+		if (dirent_ptr->d_type == DT_DIR) {
 			if (CURRENT_DIRECTORY != fileName && UP_DIRECTORY != fileName) {
 				auto subFiles = getDirectoryFiles(getPath({dir, fileName}), extensions);
-                		files.insert(end(files), begin(subFiles), end(subFiles));
-            		}
-        	}
-        	else if (dirent_ptr->d_type == DT_REG &&
-        		 find(extensions.begin(), extensions.end(), getFileExtension(fileName)) != extensions.end()
-			)
-        		files.push_back(getPath({dir, fileName}));
-    	}
-
-    	return files;
+				files.insert(end(files), begin(subFiles), end(subFiles));
+			}
+		}
+		else if (dirent_ptr->d_type == DT_REG && find(extensions.begin(), extensions.end(), getFileExtension(fileName)) != extensions.end())
+			files.push_back(getPath({dir, fileName}));
+	}
+	
+	return files;
 }
 
 
@@ -145,30 +142,29 @@ int main() {
 	cout << MSG_BEGIN_FILE_OPERATION << endl;
 	
 	try {
-    		for (auto & fileName: getDirectoryFiles(FILE_SOURCE_DIRECTORY, {FILE_SOURCE_EXTENSION})) {
-    			string line;
-    			stringstream json;
-
-    			ifstream fileSource (fileName);
-    			if (fileSource.is_open()) {
-    				while (getline(fileSource, line))
-    					json<<line;
-
-    				ofstream fileDestination (fileName.replace(fileName
-				                          .find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
-    				if (fileDestination) {
+		for (auto & fileName: getDirectoryFiles(FILE_SOURCE_DIRECTORY, {FILE_SOURCE_EXTENSION})) {
+			string line;
+			stringstream json;
+			
+			ifstream fileSource (fileName);
+			if (fileSource.is_open()) {
+				while (getline(fileSource, line))
+					json<<line;
+				
+				ofstream fileDestination (fileName.replace(fileName.find(FILE_SOURCE_EXTENSION), FILE_SOURCE_EXTENSION.length(), FILE_DESTINATION_EXTENSION));
+				if (fileDestination) {
 					for (auto & oddsData: getOddsData(json.str()))
 						fileDestination << oddsData << endl;
-    				}
-    				fileDestination.close();
-    			}
-    			fileSource.close();
+				}
+				fileDestination.close();
+			}
+			fileSource.close();
 		}
-    		cout << MSG_END_FILE_OPERATION << endl;
-    	}
+		cout << MSG_END_FILE_OPERATION << endl;
+	}
 	catch (exception & ex) {
-    		cout << MSG_ERROR_FILE_OPERATION << ex.what()<< endl;
-    	}
-
-    	return 0;
+		cout << MSG_ERROR_FILE_OPERATION << ex.what()<< endl;
+	}
+	
+	return 0;
 }
