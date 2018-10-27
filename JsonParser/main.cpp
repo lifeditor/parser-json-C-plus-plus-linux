@@ -164,7 +164,7 @@ int main() {
     				fileDestination.close();
     			}
     			fileSource.close();
-    		}
+		}
     		cout << MSG_END_FILE_OPERATION << endl;
     	}
 	catch (exception & ex) {
