@@ -2,6 +2,8 @@
 
 Исходный код ./JsonParser/main.cpp
 
+Для работы с JSON подлючена библиотека rapidjson
+
 Скомпилированное приложение ./JsonParser/Release/JsonParser
 
 Файлы для проверки ./JsonParser/Release/test
