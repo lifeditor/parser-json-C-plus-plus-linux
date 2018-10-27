@@ -1,6 +1,6 @@
 # parser-json-C-plus-plus-linux
 
-Исходный код main.cpp.
+Исходный код ./JsonParsermain.cpp
 
 Скомпилированное приложение ./JsonParser/Release/JsonParser
 
