@@ -115,30 +115,30 @@ string getPath(initializer_list<string> parts) {
 
 
 vector<string> getDirectoryFiles(const string & dir, const vector<string> & extensions) {
-    vector<string> files;
-    shared_ptr<DIR> directory_ptr(opendir(dir.c_str()), [](DIR* dir){ dir && closedir(dir); });
+	vector<string> files;
+	shared_ptr<DIR> directory_ptr(opendir(dir.c_str()), [](DIR* dir){ dir && closedir(dir); });
 
-    if (!directory_ptr)
-        throw system_error(error_code(errno, system_category()), MSG_ERROR_DIRECTORY_OPEN + dir);
+    	if (!directory_ptr)
+		throw system_error(error_code(errno, system_category()), MSG_ERROR_DIRECTORY_OPEN + dir);
 
-    struct dirent *dirent_ptr;
+    	struct dirent *dirent_ptr;
 
-    while ((dirent_ptr = readdir(directory_ptr.get())) != nullptr) {
-        const string fileName {dirent_ptr->d_name};
+    	while ((dirent_ptr = readdir(directory_ptr.get())) != nullptr) {
+        	const string fileName {dirent_ptr->d_name};
 
-        if (dirent_ptr->d_type == DT_DIR) {
-            if (CURRENT_DIRECTORY != fileName && UP_DIRECTORY != fileName) {
-                auto subFiles = getDirectoryFiles(getPath({dir, fileName}), extensions);
-                files.insert(end(files), begin(subFiles), end(subFiles));
-            }
-        }
-        else if (dirent_ptr->d_type == DT_REG &&
+        	if (dirent_ptr->d_type == DT_DIR) {
+			if (CURRENT_DIRECTORY != fileName && UP_DIRECTORY != fileName) {
+				auto subFiles = getDirectoryFiles(getPath({dir, fileName}), extensions);
+                		files.insert(end(files), begin(subFiles), end(subFiles));
+            		}
+        	}
+        	else if (dirent_ptr->d_type == DT_REG &&
         		 find(extensions.begin(), extensions.end(), getFileExtension(fileName)) != extensions.end()
-		)
-        	files.push_back(getPath({dir, fileName}));
-    }
+			)
+        		files.push_back(getPath({dir, fileName}));
+    	}
 
-    return files;
+    	return files;
 }
 
 
