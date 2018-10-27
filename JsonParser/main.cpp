@@ -102,15 +102,15 @@ string getFileExtension (string fileName) {
 
 
 string getPath(initializer_list<string> parts) {
-    string pathTmp {};
-    string separator = "";
+	string pathTmp {};
+	string separator = "";
 
-    for (auto & part: parts) {
-        pathTmp.append(separator).append(part);
-        separator = SEPARATOR;
-    }
+    	for (auto & part: parts) {
+		pathTmp.append(separator).append(part);
+        	separator = SEPARATOR;
+    	}
 
-    return pathTmp;
+    	return pathTmp;
 }
 
 
