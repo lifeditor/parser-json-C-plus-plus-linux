@@ -4,6 +4,6 @@
 
 Скомпилированное приложение ./JsonParser/Release/JsonParser
 
-Файлы для проверки ./JsonParser/Release/JsonParser/test
+Файлы для проверки ./JsonParser/Release/test
 
 Тестировал работу в Ubuntu 18.10 (64bit).
