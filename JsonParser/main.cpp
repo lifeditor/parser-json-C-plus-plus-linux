@@ -37,10 +37,9 @@ const char* KEY_ODDS = "odds";
 vector<string> getOddsData(const string json) {
 	vector<string> oddsData;
 	stringstream stringStream;
+	Document document;
 
 	try {
-		Document document;
-
 		if (document.Parse(json.c_str()).HasParseError())
 			throw JSON_BAD_FORMAT;
 
